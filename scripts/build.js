@@ -7,7 +7,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const root = resolve(__dirname, "..");
 
-// Programmatic build to sidestep config-path glob issues.
 await build({
   root,
   configFile: false,

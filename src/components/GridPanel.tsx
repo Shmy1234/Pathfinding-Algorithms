@@ -82,9 +82,8 @@ interface GridBoardProps {
 
 function GridBoard({ grid, showCoords, onCellClick }: GridBoardProps) {
   const cells = useMemo(() => {
-    const rows: JSX.Element[] = [];
+    const elements: JSX.Element[] = [];
     for (let row = 0; row < ROWS; row++) {
-      const cols: JSX.Element[] = [];
       for (let col = 0; col < COLS; col++) {
         const node = grid[col]?.[row];
         if (!node) continue;
@@ -96,7 +95,7 @@ function GridBoard({ grid, showCoords, onCellClick }: GridBoardProps) {
         if (node.open) classes.push("open");
         if (node.checked) classes.push("checked");
         if (node.path) classes.push("path");
-        cols.push(
+        elements.push(
           <button
             key={`${col}-${row}`}
             type="button"
@@ -107,9 +106,8 @@ function GridBoard({ grid, showCoords, onCellClick }: GridBoardProps) {
           </button>
         );
       }
-      rows.push(cols);
     }
-    return rows;
+    return elements;
   }, [grid, showCoords, onCellClick]);
 
   return <div className="grid" style={{ gridTemplateColumns: `repeat(${COLS}, minmax(0, 1fr))` }}>{cells}</div>;

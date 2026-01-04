@@ -152,7 +152,7 @@ function markPath(node: NodeState): void {
 }
 
 function isWalkable(node: NodeState | null): node is NodeState {
-  return Boolean(node) && !node.solid;
+  return node !== null && !node.solid;
 }
 
 function getNode(grid: Grid, coord: Coordinate): NodeState | null {
