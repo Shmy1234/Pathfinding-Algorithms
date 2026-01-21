@@ -157,7 +157,8 @@ function isWalkable(node: NodeState | null): node is NodeState {
 
 function getNode(grid: Grid, coord: Coordinate): NodeState | null {
   if (coord.col < 0 || coord.col >= grid.length) return null;
-  if (coord.row < 0 || coord.row >= grid[0].length) return null;
+  const rowCount = grid[0]?.length ?? 0;
+  if (coord.row < 0 || coord.row >= rowCount) return null;
   return grid[coord.col][coord.row];
 }
 
